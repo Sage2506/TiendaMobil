@@ -12,7 +12,7 @@ public interface ProductsServices {
     @GET("products")
     Call<ArrayList<Product>> GetAll();
 
-    @GET("products/{code}")
-    Call<ArrayList<Product>> Get(@Path("code") int code);
+    @GET("products/category/{category}")
+    Call<ArrayList<Product>> GetAll(@Path("category") String category);
 
 }

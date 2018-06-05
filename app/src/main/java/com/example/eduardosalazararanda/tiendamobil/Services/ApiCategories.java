@@ -23,7 +23,7 @@ public class ApiCategories {
         service = retrofit.create(CategoriesServices.class);
     }
     public ArrayList<Category> getAll(final CategoryListAdapter adapter){
-        final ArrayList<Category> result = new ArrayList<Category>();
+
         Call<ArrayList<Category>> CategorysResponse = service.GetAll();
         CategorysResponse.enqueue(new Callback<ArrayList<Category>>() {
             @Override

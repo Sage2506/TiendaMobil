@@ -1,5 +1,6 @@
 package com.example.eduardosalazararanda.tiendamobil.Services;
 
+import com.example.eduardosalazararanda.tiendamobil.Adapters.ProductListAdapter;
 import com.example.eduardosalazararanda.tiendamobil.Models.Product;
 
 import java.util.ArrayList;
@@ -21,14 +22,31 @@ public class ApiProducts {
                 .build();
         service = retrofit.create(ProductsServices.class);
     }
-    public ArrayList<Product> getAll(){
+    public ArrayList<Product> getAll(final ProductListAdapter adapter){
         final ArrayList<Product> result = new ArrayList<Product>();
         Call<ArrayList<Product>> productsResponse = service.GetAll();
         productsResponse.enqueue(new Callback<ArrayList<Product>>() {
             @Override
             public void onResponse(Call<ArrayList<Product>> call, Response<ArrayList<Product>> response) {
                 if(response.isSuccessful()){
+                    adapter.addItemsList(response.body());
+                }
+            }
 
+            @Override
+            public void onFailure(Call<ArrayList<Product>> call, Throwable t) {
+
+            }
+        });
+        return null;
+    }
+    public ArrayList<Product> getAll(final ProductListAdapter adapter,String category){
+        Call<ArrayList<Product>> productsResponse = service.GetAll(category);
+        productsResponse.enqueue(new Callback<ArrayList<Product>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Product>> call, Response<ArrayList<Product>> response) {
+                if(response.isSuccessful()){
+                    adapter.addItemsList(response.body());
                 }
             }
 

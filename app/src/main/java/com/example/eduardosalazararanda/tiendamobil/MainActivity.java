@@ -1,5 +1,6 @@
 package com.example.eduardosalazararanda.tiendamobil;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -8,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import com.example.eduardosalazararanda.tiendamobil.Adapters.CategoryListAdapter;
 import com.example.eduardosalazararanda.tiendamobil.Models.Category;
 import com.example.eduardosalazararanda.tiendamobil.Services.ApiCategories;
+import com.example.eduardosalazararanda.tiendamobil.Services.Product.ProductListActivity;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -30,7 +32,9 @@ public class MainActivity extends AppCompatActivity {
         adapter.setListener(new CategoryListAdapter.Listener() {
             @Override
             public void Category(Category c) {
-                // Abrir el sig intent
+                Intent products = new Intent(getApplicationContext(),ProductListActivity.class);
+                products.putExtra("category",c.getName());
+                startActivity(products);
             }
         });
 

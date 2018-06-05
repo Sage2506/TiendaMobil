@@ -22,7 +22,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     private Context context;
     private ProductListAdapter.Listener listener;
     public interface Listener{
-
+        void Product(Product p);
     }
     public void setListener(ProductListAdapter.Listener listener){ this.listener = listener;}
     @Override
@@ -33,8 +33,8 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
             @Override
             public void onClick(View view) {
                 if(listener!=null){
-                    /*ProdResponse d = dataset.get((int)view.getTag());
-                    listener.openProd(d);*/
+                    Product d = dataset.get((int)view.getTag());
+                    listener.Product(d);
                 }
             }
         });
@@ -46,7 +46,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         Product p = dataset.get(position);
         holder.TvProdName.setText(p.getName());
         holder.TvProdDesc.setText(p.getDescription());
-        holder.TvProdPrice.setText(p.getPrice());
+        holder.TvProdPrice.setText(p.getPrice()+"");
         holder.cardView.setTag(position);
         Glide.with(context)
                 .load(p.getImage())
@@ -85,7 +85,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
             TvProdName = itemView.findViewById(R.id.tv_prod_name);
             TvProdDesc = itemView.findViewById(R.id.tv_prod_desc);
             TvProdDesc = itemView.findViewById(R.id.tv_prod_desc);
-            TvProdPrice = itemView.findViewById(R.id.tv_prod_price);
+            TvProdPrice = itemView.findViewById(R.id.tv_prod_pric);
             cardView = (CardView) itemView;
         }
     }

@@ -16,7 +16,7 @@ public class Product{
 	private int price;
 
 	@SerializedName("name")
-	private Object name;
+	private String name;
 
 	@SerializedName("description")
 	private String description;
@@ -51,11 +51,11 @@ public class Product{
 		return price;
 	}
 
-	public void setName(Object name){
+	public void setName(String name){
 		this.name = name;
 	}
 
-	public Object getName(){
+	public String getName(){
 		return name;
 	}
 

@@ -1,7 +1,6 @@
-package com.example.eduardosalazararanda.tiendamobil.Services;
+package com.example.eduardosalazararanda.tiendamobil.Product;
 
 import com.example.eduardosalazararanda.tiendamobil.Adapters.ProductListAdapter;
-import com.example.eduardosalazararanda.tiendamobil.Models.Product;
 
 import java.util.ArrayList;
 
@@ -40,7 +39,7 @@ public class ApiProducts {
         });
         return null;
     }
-    public ArrayList<Product> getAll(final ProductListAdapter adapter,String category){
+    public ArrayList<Product> getAll(final ProductListAdapter adapter, String category){
         Call<ArrayList<Product>> productsResponse = service.GetAll(category);
         productsResponse.enqueue(new Callback<ArrayList<Product>>() {
             @Override

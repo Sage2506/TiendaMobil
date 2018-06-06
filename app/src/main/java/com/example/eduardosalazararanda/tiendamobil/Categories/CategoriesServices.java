@@ -1,6 +1,4 @@
-package com.example.eduardosalazararanda.tiendamobil.Services;
-
-import com.example.eduardosalazararanda.tiendamobil.Models.Category;
+package com.example.eduardosalazararanda.tiendamobil.Categories;
 
 import java.util.ArrayList;
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Product.ProductListActivity">
+    tools:context=".Orders.OrdersListActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -40,4 +40,5 @@
             android:layout_height="wrap_content"
             android:text="Compras" />
     </LinearLayout>
+
 </LinearLayout>

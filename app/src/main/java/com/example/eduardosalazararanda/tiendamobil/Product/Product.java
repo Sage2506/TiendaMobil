@@ -1,4 +1,4 @@
-package com.example.eduardosalazararanda.tiendamobil.Models;
+package com.example.eduardosalazararanda.tiendamobil.Product;
 
 
 import com.google.gson.annotations.SerializedName;
@@ -13,7 +13,7 @@ public class Product{
 	private String code;
 
 	@SerializedName("price")
-	private int price;
+	private String price;
 
 	@SerializedName("name")
 	private String name;
@@ -43,11 +43,11 @@ public class Product{
 		return code;
 	}
 
-	public void setPrice(int price){
+	public void setPrice(String price){
 		this.price = price;
 	}
 
-	public int getPrice(){
+	public String getPrice(){
 		return price;
 	}
 

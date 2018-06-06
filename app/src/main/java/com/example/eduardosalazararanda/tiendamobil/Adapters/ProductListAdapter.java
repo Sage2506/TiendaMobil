@@ -11,8 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.example.eduardosalazararanda.tiendamobil.Models.Product;
-import com.example.eduardosalazararanda.tiendamobil.Models.Product;
+import com.example.eduardosalazararanda.tiendamobil.Product.Product;
 import com.example.eduardosalazararanda.tiendamobil.R;
 
 import java.util.ArrayList;

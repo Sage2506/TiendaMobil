@@ -1,4 +1,4 @@
-package com.example.eduardosalazararanda.tiendamobil.Models;
+package com.example.eduardosalazararanda.tiendamobil.ShoppingCart;
 
 import com.google.gson.annotations.SerializedName;
 

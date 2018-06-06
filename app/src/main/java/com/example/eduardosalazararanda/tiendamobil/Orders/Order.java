@@ -1,8 +1,25 @@
-package com.example.eduardosalazararanda.tiendamobil.Models;
+package com.example.eduardosalazararanda.tiendamobil.Orders;
 
+import com.example.eduardosalazararanda.tiendamobil.Product.Product;
 import com.google.gson.annotations.SerializedName;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.TimeZone;
+
 public class Order{
+	public Order(Product product, String client) {
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTimeZone(TimeZone.getTimeZone("GMT-6"));
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+		this.product = product.getCode();
+		this.client = client;
+		this.descriptionProduct = product.getName();
+		this.orderDate = dateFormat.format(calendar.getTime());
+		this.productPrice = product.getPrice();
+	}
 
 	@SerializedName("product")
 	private String product;
@@ -38,7 +55,7 @@ public class Order{
 	private String orderDate;
 
 	@SerializedName("productPrice")
-	private int productPrice;
+	private String productPrice;
 
 	@SerializedName("longitude")
 	private int longitude;
@@ -131,11 +148,11 @@ public class Order{
 		return orderDate;
 	}
 
-	public void setProductPrice(int productPrice){
+	public void setProductPrice(String productPrice){
 		this.productPrice = productPrice;
 	}
 
-	public int getProductPrice(){
+	public String getProductPrice(){
 		return productPrice;
 	}
 

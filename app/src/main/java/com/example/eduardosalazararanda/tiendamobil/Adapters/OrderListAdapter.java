@@ -6,12 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.example.eduardosalazararanda.tiendamobil.Models.Order;
+import com.example.eduardosalazararanda.tiendamobil.Orders.Order;
 import com.example.eduardosalazararanda.tiendamobil.R;
 
 import java.util.ArrayList;
@@ -46,7 +43,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
         Order d = dataset.get(position);
         holder.TvOrderName.setText(d.getDescriptionProduct());
         holder.TvOrderDesc.setText(d.getDescriptionProduct());
-        holder.TvOrderPrice.setText(d.getProductPrice());
+        holder.TvOrderPrice.setText(d.getProductPrice()+"");
         holder.cardView.setTag(position);
         /*Glide.with(context)
                 .load(d.getImage())

@@ -1,7 +1,6 @@
-package com.example.eduardosalazararanda.tiendamobil.Services;
+package com.example.eduardosalazararanda.tiendamobil.Categories;
 
 import com.example.eduardosalazararanda.tiendamobil.Adapters.CategoryListAdapter;
-import com.example.eduardosalazararanda.tiendamobil.Models.Category;
 
 import java.util.ArrayList;
 
@@ -40,4 +39,5 @@ public class ApiCategories {
         });
         return null;
     }
+
 }

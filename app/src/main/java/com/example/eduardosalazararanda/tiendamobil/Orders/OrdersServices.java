@@ -35,7 +35,7 @@ public interface OrdersServices {
 
     // Actualizar datos del pedido
     @PUT("pedidos/{id}")
-    Call<Order> Update(@Path("id") String IdOrder, Order order);
+    Call<Order> Update(@Path("id") String IdOrder,@Body Order order);
 
     // Cancelar pedido
     @DELETE("pedidos/{id}")

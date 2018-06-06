@@ -17,7 +17,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
     private Context context;
     private OrderListAdapter.Listener listener;
     public interface Listener{
-
+        void openOrder(Order o);
     }
     public void setListener(OrderListAdapter.Listener listener){ this.listener = listener;}
     @Override
@@ -28,8 +28,8 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
             @Override
             public void onClick(View view) {
                 if(listener!=null){
-                    /*OrderResponse d = dataset.get((int)view.getTag());
-                    listener.openOrder(d);*/
+                    Order o = dataset.get((int)view.getTag());
+                    listener.openOrder(o);
                 }
             }
         });

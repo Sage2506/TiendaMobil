@@ -2,6 +2,8 @@ package com.example.eduardosalazararanda.tiendamobil.Orders;
 
 import android.util.Log;
 
+import com.example.eduardosalazararanda.tiendamobil.ShoppingCart.ApiShoppingCart;
+
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -78,18 +80,19 @@ public class ApiOrders {
 
 
 
-    public void Update(Order order){
+    public void Update(Order order, final ServiceCallCack serviceCallBack){
         Call<Order> orderResponse = service.Update(order.getOrderId(),order);
         orderResponse.enqueue(new Callback<Order>() {
             @Override
             public void onResponse(Call<Order> call, Response<Order> response) {
                 if(response.isSuccessful()){
-                    Log.i(TAG, response.body().toString());
+                    //Log.i(TAG, response.body().toString());
+                    serviceCallBack.response(true);
                 }
             }
             @Override
             public void onFailure(Call<Order> call, Throwable t) {
-
+                serviceCallBack.response(true);
             }
         });
     }

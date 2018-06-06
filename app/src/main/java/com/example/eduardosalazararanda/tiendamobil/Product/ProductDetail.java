@@ -42,7 +42,7 @@ public class ProductDetail extends AppCompatActivity {
 
         name.setText(product.getName());
         desc.setText(product.getDescription());
-        price.setText(product.getPrice()+"");
+        price.setText(product.getPrice());
         final ApiOrders orders = new ApiOrders();
         final ApiShoppingCart cart = new ApiShoppingCart();
 

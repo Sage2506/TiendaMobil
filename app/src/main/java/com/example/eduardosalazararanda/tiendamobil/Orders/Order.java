@@ -10,6 +10,10 @@ import java.util.Calendar;
 import java.util.TimeZone;
 
 public class Order{
+	public Order(String orderId, String state){
+		this.orderId = orderId;
+		this.state = state;
+	}
 	public Order(Product product, String client) {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTimeZone(TimeZone.getTimeZone("GMT-6"));
@@ -34,7 +38,7 @@ public class Order{
 	private int latitude;
 
 	@SerializedName("pay")
-	private Object pay;
+	private String pay;
 
 	@SerializedName("phone")
 	private String phone;
@@ -92,11 +96,11 @@ public class Order{
 		return latitude;
 	}
 
-	public void setPay(Object pay){
+	public void setPay(String pay){
 		this.pay = pay;
 	}
 
-	public Object getPay(){
+	public String getPay(){
 		return pay;
 	}
 

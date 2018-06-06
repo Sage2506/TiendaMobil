@@ -42,5 +42,23 @@ public class OrdersListActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        adapter.setListener(new OrderListAdapter.Listener() {
+            @Override
+            public void openOrder(Order o) {
+                Intent order = new Intent(getApplicationContext(), OrderDetailsActivity.class);
+                order.putExtra("product",o.getProduct());
+                order.putExtra("orderId",o.getOrderId());
+                order.putExtra("pay",o.getPay());
+                order.putExtra("payment",o.getPayment());
+                order.putExtra("state",o.getState());
+                order.putExtra("client",o.getClient());
+                order.putExtra("descriptionproduct",o.getDescriptionProduct());
+                order.putExtra("orderdate",o.getOrderDate());
+                order.putExtra("productprice",o.getProductPrice());
+                startActivity(order);
+
+            }
+        });
     }
 }

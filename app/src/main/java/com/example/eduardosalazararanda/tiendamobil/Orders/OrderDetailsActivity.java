@@ -28,17 +28,17 @@ public class OrderDetailsActivity extends AppCompatActivity {
         orders = new ApiOrders();
 
 
-        prod.setText(order.getStringExtra("product"));
+        prod.setText("Codigo de producto: "+order.getStringExtra("product"));
         //order.getStringExtra("orderId");
         //order.getStringExtra("pay");
         //order.getStringExtra("payment");
         final String stateS = order.getStringExtra("state");
         final String orderId = order.getStringExtra("orderId");
-        state.setText(order.getStringExtra("state"));
-        client.setText(order.getStringExtra("client"));
-        name.setText(order.getStringExtra("descriptionproduct"));
+        state.setText("Estado: "+ order.getStringExtra("state"));
+        client.setText("Cliente: "+order.getStringExtra("client"));
+        name.setText("Producto: "+order.getStringExtra("descriptionproduct"));
         date.setText(order.getStringExtra("orderdate"));
-        pric.setText(order.getStringExtra("productprice"));
+        pric.setText("Precio: "+order.getStringExtra("productprice"));
 
         if(!stateS.equals("No Pagado")){
             btnBuy.setVisibility(View.GONE);

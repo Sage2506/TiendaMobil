@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_alignParentTop="true"
-        android:layout_weight="0.88"
+        android:layout_weight="0.82"
         android:orientation="vertical">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_items"
@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:gravity="bottom"
-        android:layout_weight="0.12"
+        android:layout_weight="0.18"
         android:layout_marginBottom="5dp"
 
         >

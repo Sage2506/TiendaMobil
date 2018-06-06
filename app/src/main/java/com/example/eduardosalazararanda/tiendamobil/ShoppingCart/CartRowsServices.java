@@ -24,4 +24,7 @@ public interface CartRowsServices {
     // Eliminar del carrito
     @DELETE("ShoppingCart/{partition}/{row}")
     Call<Object> Remove(@Path("partition") String partition, @Path("row") String row);
+
+    @POST("ShoppingCart/Comprar/{email}/{pay}")
+    Call<Object> BuyAll(@Path("email") String email, @Path("pay") String pay);
 }

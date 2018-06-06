@@ -1,4 +1,4 @@
-package com.example.eduardosalazararanda.tiendamobil.Adapters;
+package com.example.eduardosalazararanda.tiendamobil.Categories;
 
 import android.content.Context;
 import android.support.v7.widget.CardView;
@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.example.eduardosalazararanda.tiendamobil.Categories.Category;
 import com.example.eduardosalazararanda.tiendamobil.R;
 
 import java.util.ArrayList;

@@ -14,9 +14,11 @@ import com.example.eduardosalazararanda.tiendamobil.ApplicationSession;
 import com.example.eduardosalazararanda.tiendamobil.Orders.ApiOrders;
 import com.example.eduardosalazararanda.tiendamobil.Orders.Order;
 import com.example.eduardosalazararanda.tiendamobil.Orders.OrderToPost;
+import com.example.eduardosalazararanda.tiendamobil.Orders.OrdersListActivity;
 import com.example.eduardosalazararanda.tiendamobil.R;
 import com.example.eduardosalazararanda.tiendamobil.ShoppingCart.ApiShoppingCart;
 import com.example.eduardosalazararanda.tiendamobil.ShoppingCart.CartRow;
+import com.example.eduardosalazararanda.tiendamobil.ShoppingCart.ShoppingListActivity;
 
 public class ProductDetail extends AppCompatActivity {
 
@@ -57,8 +59,16 @@ public class ProductDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Order order = new Order(product, email);
-                orders.create(order);
-
+                orders.create(order, new ApiOrders.ServiceCallCack() {
+                    @Override
+                    public void response(Boolean bool) {
+                        if(bool){
+                            Intent orders = new Intent(getApplicationContext(), OrdersListActivity.class);
+                            startActivity(orders);
+                            finish();
+                        }
+                    }
+                });
             }
         });
 
@@ -66,7 +76,17 @@ public class ProductDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 CartRow cartRow = new CartRow(product);
-                cart.add(email, cartRow);
+                cart.add(email, cartRow, new ApiShoppingCart.ServiceCallBack() {
+                    @Override
+                    public void response(Boolean bool) {
+                        if(bool){
+                            Intent cart = new Intent(getApplicationContext(), ShoppingListActivity.class);
+                            startActivity(cart);
+                            finish();
+                        }
+                    }
+                });
+
             }
         });
     }

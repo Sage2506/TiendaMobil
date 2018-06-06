@@ -1,4 +1,4 @@
-package com.example.eduardosalazararanda.tiendamobil.Adapters;
+package com.example.eduardosalazararanda.tiendamobil.Orders;
 
 import android.content.Context;
 import android.support.v7.widget.CardView;
@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.eduardosalazararanda.tiendamobil.Orders.Order;
 import com.example.eduardosalazararanda.tiendamobil.R;
 
 import java.util.ArrayList;
@@ -42,7 +41,6 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
 
         Order d = dataset.get(position);
         holder.TvOrderName.setText(d.getDescriptionProduct());
-        holder.TvOrderDesc.setText(d.getDescriptionProduct());
         holder.TvOrderPrice.setText(d.getProductPrice()+"");
         holder.cardView.setTag(position);
         /*Glide.with(context)
@@ -71,7 +69,6 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
     public class ViewHolder extends RecyclerView.ViewHolder{
         //private ImageView IvOrderPic;
         private TextView TvOrderName;
-        private TextView TvOrderDesc;
         private TextView TvOrderPrice;
         private CardView cardView;
 
@@ -80,7 +77,6 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
 
             //IvOrderPic = itemView.findViewById(R.id.iv_Order_pic);
             TvOrderName = itemView.findViewById(R.id.tv_ord_name);
-            TvOrderDesc = itemView.findViewById(R.id.tv_ord_desc);
             TvOrderPrice = itemView.findViewById(R.id.tv_ord_price);
             cardView = (CardView) itemView;
         }

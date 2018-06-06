@@ -37,15 +37,6 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/tv_ord_desc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Descripcion"
-                android:textAllCaps="true"
-                android:textSize="20dp" />
-
-            <TextView
                 android:id="@+id/tv_ord_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

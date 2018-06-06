@@ -1,4 +1,4 @@
-package com.example.eduardosalazararanda.tiendamobil;
+package com.example.eduardosalazararanda.tiendamobil.Categories;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,17 +8,20 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.eduardosalazararanda.tiendamobil.Adapters.CategoryListAdapter;
+import com.example.eduardosalazararanda.tiendamobil.Categories.CategoryListAdapter;
 import com.example.eduardosalazararanda.tiendamobil.Categories.Category;
 import com.example.eduardosalazararanda.tiendamobil.Orders.OrdersListActivity;
 import com.example.eduardosalazararanda.tiendamobil.Categories.ApiCategories;
 import com.example.eduardosalazararanda.tiendamobil.Product.ProductListActivity;
+import com.example.eduardosalazararanda.tiendamobil.R;
 import com.example.eduardosalazararanda.tiendamobil.ShoppingCart.ShoppingListActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class CategoriesListActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private CategoryListAdapter adapter;
     private ApiCategories api;
+    Button btnShoppingCart;
+    Button btnOrders;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +47,13 @@ public class MainActivity extends AppCompatActivity {
 
         api.getAll(adapter);
 
-        Button btnShoppingCart = findViewById(R.id.btn_cart);
-        Button btnOrders= findViewById(R.id.btn_orders);
+        btnShoppingCart = findViewById(R.id.btn_cart);
+        btnOrders= findViewById(R.id.btn_orders);
 
         btnShoppingCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                btnShoppingCart.setEnabled(false);
                 Intent shoppingCart = new Intent(getApplicationContext(), ShoppingListActivity.class);
                 startActivity(shoppingCart);
             }
@@ -58,9 +62,17 @@ public class MainActivity extends AppCompatActivity {
         btnOrders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                btnOrders.setEnabled(false);
                 Intent orders = new Intent(getApplicationContext(), OrdersListActivity.class);
                 startActivity(orders);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        btnOrders.setEnabled(true);
+        btnShoppingCart.setEnabled(true);
     }
 }

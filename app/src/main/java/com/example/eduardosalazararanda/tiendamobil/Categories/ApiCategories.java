@@ -1,7 +1,5 @@
 package com.example.eduardosalazararanda.tiendamobil.Categories;
 
-import com.example.eduardosalazararanda.tiendamobil.Adapters.CategoryListAdapter;
-
 import java.util.ArrayList;
 
 import retrofit2.Call;

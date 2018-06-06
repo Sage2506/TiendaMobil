@@ -2,8 +2,6 @@ package com.example.eduardosalazararanda.tiendamobil.Orders;
 
 import android.util.Log;
 
-import com.example.eduardosalazararanda.tiendamobil.Adapters.OrderListAdapter;
-
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -43,18 +41,20 @@ public class ApiOrders {
         return null;
     }
 
-    public void create(Order order){
+    public void create(Order order, final ServiceCallCack callCack){
         Call<Order> orderResponse = service.Create(order);
         orderResponse.enqueue(new Callback<Order>() {
             @Override
             public void onResponse(Call<Order> call, Response<Order> response) {
                 if(response.isSuccessful()){
                     Log.i(TAG, response.body().toString());
+                    callCack.response(true);
                 }
             }
             @Override
             public void onFailure(Call<Order> call, Throwable t) {
                 Log.e(TAG, t.getMessage());
+                callCack.response(false);
             }
         });
     }
@@ -108,5 +108,8 @@ public class ApiOrders {
 
             }
         });
+    }
+    public interface ServiceCallCack{
+        void response(Boolean bool);
     }
 }

@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:name=".ApplicationSession"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Categories.CategoriesListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,7 +21,7 @@
         </activity>
         <activity
             android:name=".Product.ProductListActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".Categories.CategoriesListActivity" />
         <activity android:name=".Product.ProductDetail" />
         <activity android:name=".ShoppingCart.ShoppingListActivity" />
         <activity android:name=".Orders.OrdersListActivity"></activity>

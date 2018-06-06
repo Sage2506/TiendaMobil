@@ -52,16 +52,17 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:orientation="vertical">
-            <Button
-                android:id="@+id/btn_buy_product"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Comprar" />
+
             <Button
                 android:id="@+id/btn_add_cart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Agregar a Carrito" />
+            <Button
+                android:id="@+id/btn_buy_product"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Comprar" />
 
         </LinearLayout>
 

@@ -1,4 +1,4 @@
-package com.example.eduardosalazararanda.tiendamobil.Adapters;
+package com.example.eduardosalazararanda.tiendamobil.ShoppingCart;
 
 import android.content.Context;
 import android.support.v7.widget.CardView;
@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.eduardosalazararanda.tiendamobil.ShoppingCart.CartRow;
 import com.example.eduardosalazararanda.tiendamobil.R;
 
 import java.util.ArrayList;
@@ -18,7 +17,7 @@ public class CartRowListAdapter extends RecyclerView.Adapter<CartRowListAdapter.
     private Context context;
     private CartRowListAdapter.Listener listener;
     public interface Listener{
-
+        void Remove(CartRow cr);
     }
     public void setListener(CartRowListAdapter.Listener listener){ this.listener = listener;}
     @Override
@@ -29,11 +28,12 @@ public class CartRowListAdapter extends RecyclerView.Adapter<CartRowListAdapter.
             @Override
             public void onClick(View view) {
                 if(listener!=null){
-                    /*DishResponse d = dataset.get((int)view.getTag());
-                    listener.openDish(d);*/
+                    CartRow c = dataset.get((int)view.getTag());
+                    listener.Remove(c);
                 }
             }
         });
+
         return new CartRowListAdapter.ViewHolder(view);
     }
 
@@ -61,6 +61,15 @@ public class CartRowListAdapter extends RecyclerView.Adapter<CartRowListAdapter.
         dataset.addAll(items);
         notifyDataSetChanged();
     }
+    public void removeItem(CartRow item){
+        dataset.remove(item);
+        notifyDataSetChanged();
+    }
+    public void emptyCart(){
+        dataset.clear();
+        notifyDataSetChanged();
+    }
+
 
     @Override
     public int getItemCount() {

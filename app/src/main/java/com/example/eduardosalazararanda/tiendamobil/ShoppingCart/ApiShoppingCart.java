@@ -2,8 +2,6 @@ package com.example.eduardosalazararanda.tiendamobil.ShoppingCart;
 
 import android.util.Log;
 
-import com.example.eduardosalazararanda.tiendamobil.Adapters.CartRowListAdapter;
-
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -42,55 +40,74 @@ public class ApiShoppingCart {
             }
         });
     }
-    public void deleteAll( String client){
+    public void deleteAll(String client, final ServiceCallBack serviceCallBack){
         Call<Object> productsResponse = service.Clear(client);
         productsResponse.enqueue(new Callback<Object>() {
             @Override
             public void onResponse(Call<Object> call, Response<Object> response) {
                 if(response.isSuccessful()){
-
+                    serviceCallBack.response(true);
                 }
             }
 
             @Override
             public void onFailure(Call<Object> call, Throwable t) {
-
+                serviceCallBack.response(false);
             }
         });
     }
 
-    public void add(String client, CartRow cartRow){
-        Call<CartRow> productsResponse = service.Create(client, cartRow);
-        productsResponse.enqueue(new Callback<CartRow>() {
+    public void add(String client, CartRow cartRow, final ServiceCallBack serviceCallBack){
+        Call<CartRow> CartResponse = service.Create(client, cartRow);
+        CartResponse.enqueue(new Callback<CartRow>() {
             @Override
             public void onResponse(Call<CartRow> call, Response<CartRow> response) {
                 if(response.isSuccessful()){
-                    Log.i(TAG, response.body().getCode());
+                    serviceCallBack.response(true);
                 }
             }
 
             @Override
             public void onFailure(Call<CartRow> call, Throwable t) {
-
+                serviceCallBack.response(false);
             }
         });
     }
 
-    public void remove(CartRow cartRow){
+    public void remove(CartRow cartRow, final ServiceCallBack serviceCallBack){
         Call<Object> productsResponse = service.Remove(cartRow.getPartitionKey(), cartRow.getRowKey());
         productsResponse.enqueue(new Callback<Object>() {
             @Override
             public void onResponse(Call<Object> call, Response<Object> response) {
                 if(response.isSuccessful()){
-
+                    serviceCallBack.response(true);
                 }
             }
 
             @Override
             public void onFailure(Call<Object> call, Throwable t) {
-
+                serviceCallBack.response(false);
             }
         });
+    }
+    public void ComprarTodo(String email, String payment,final ServiceCallBack serviceCallBack){
+        Call<Object> callResponse = service.BuyAll(email, payment);
+        callResponse.enqueue(new Callback<Object>() {
+            @Override
+            public void onResponse(Call<Object> call, Response<Object> response) {
+                if(response.isSuccessful()){
+                    serviceCallBack.response(true);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Object> call, Throwable t) {
+                serviceCallBack.response(false);
+            }
+        });
+    }
+    public interface ServiceCallBack{
+        void response(Boolean bool);
     }
 
 }

@@ -40,6 +40,11 @@ public class OrderDetailsActivity extends AppCompatActivity {
         date.setText(order.getStringExtra("orderdate"));
         pric.setText(order.getStringExtra("productprice"));
 
+        if(!stateS.equals("No Pagado")){
+            btnBuy.setVisibility(View.GONE);
+            cancel.setVisibility(View.GONE);
+        }
+
         btnBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

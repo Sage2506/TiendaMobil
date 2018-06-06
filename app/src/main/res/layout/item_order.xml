@@ -14,13 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-
-        <ImageView
-            android:id="@+id/iv_prod_pic"
-            android:layout_width="250px"
-            android:layout_height="250px"
-            android:layout_gravity="center_horizontal"
-            app:srcCompat="@mipmap/ic_launcher" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -32,7 +25,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:text="Platillo"
+                android:text="Nombre"
+                android:textAllCaps="true"
+                android:textSize="20dp" />
+            <TextView
+                android:id="@+id/tv_ord_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="Estado"
                 android:textAllCaps="true"
                 android:textSize="20dp" />
 

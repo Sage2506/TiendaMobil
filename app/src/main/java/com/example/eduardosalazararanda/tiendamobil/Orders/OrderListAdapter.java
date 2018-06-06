@@ -42,6 +42,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
         Order d = dataset.get(position);
         holder.TvOrderName.setText(d.getDescriptionProduct());
         holder.TvOrderPrice.setText(d.getProductPrice()+"");
+        holder.TvOrderState.setText(d.getState());
         holder.cardView.setTag(position);
         /*Glide.with(context)
                 .load(d.getImage())
@@ -57,6 +58,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
         this.context = context;
     }
     public void addItemsList(ArrayList<Order> items){
+        dataset.clear();
         dataset.addAll(items);
         notifyDataSetChanged();
     }
@@ -70,6 +72,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
         //private ImageView IvOrderPic;
         private TextView TvOrderName;
         private TextView TvOrderPrice;
+        private TextView TvOrderState;
         private CardView cardView;
 
         public ViewHolder(View itemView){
@@ -78,6 +81,8 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
             //IvOrderPic = itemView.findViewById(R.id.iv_Order_pic);
             TvOrderName = itemView.findViewById(R.id.tv_ord_name);
             TvOrderPrice = itemView.findViewById(R.id.tv_ord_price);
+            TvOrderState = itemView.findViewById(R.id.tv_ord_state);
+
             cardView = (CardView) itemView;
         }
     }

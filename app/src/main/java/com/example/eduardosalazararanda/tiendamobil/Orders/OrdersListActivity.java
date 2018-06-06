@@ -16,6 +16,7 @@ public class OrdersListActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private OrderListAdapter adapter;
     private ApiOrders api;
+    private String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +24,7 @@ public class OrdersListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_orders_list);
         final Button btnCart = findViewById(R.id.btn_cart);
         api = new ApiOrders();
-        String email = ((ApplicationSession)this.getApplication()).getEmail();
+        email = ((ApplicationSession)this.getApplication()).getEmail();
         recyclerView = findViewById(R.id.rv_items);
         adapter = new OrderListAdapter(this);
         recyclerView.setAdapter(adapter);
@@ -60,5 +61,11 @@ public class OrdersListActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        api.getAll(adapter,email);
     }
 }

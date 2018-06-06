@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.example.eduardosalazararanda.tiendamobil.R;
 
 public class OrderDetailsActivity extends AppCompatActivity {
-
+    ApiOrders orders;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +24,8 @@ public class OrderDetailsActivity extends AppCompatActivity {
         TextView state = findViewById(R.id.tv_state);
         Button btnBuy = findViewById(R.id.btn_buy);
         Button cancel = findViewById(R.id.btn_cancel);
+
+        orders = new ApiOrders();
 
 
         prod.setText(order.getStringExtra("product"));
@@ -46,6 +48,19 @@ public class OrderDetailsActivity extends AppCompatActivity {
                 buy.putExtra("orderId", orderId);
                 startActivity(buy);
                 finish();
+            }
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                orders.Delete(new Order(orderId, stateS), new ApiOrders.ServiceCallCack() {
+                    @Override
+                    public void response(Boolean bool) {
+                        if(bool)
+                        finish();
+                    }
+                });
             }
         });
     }

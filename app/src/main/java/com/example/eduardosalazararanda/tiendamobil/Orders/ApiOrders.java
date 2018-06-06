@@ -97,18 +97,18 @@ public class ApiOrders {
         });
     }
 
-    public void Delete(Order order){
-        Call<Boolean> orderResponse = service.Delete(order.getOrderId());
-        orderResponse.enqueue(new Callback<Boolean>() {
+    public void Delete(Order order, final ServiceCallCack serviceCallCack){
+        Call<Object> orderResponse = service.Delete(order.getOrderId());
+        orderResponse.enqueue(new Callback<Object>() {
             @Override
-            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+            public void onResponse(Call<Object> call, Response<Object> response) {
                 if(response.isSuccessful()){
-                    Log.i(TAG, response.body().toString());
+                    serviceCallCack.response(true);
                 }
             }
             @Override
-            public void onFailure(Call<Boolean> call, Throwable t) {
-
+            public void onFailure(Call<Object> call, Throwable t) {
+                    serviceCallCack.response(false);
             }
         });
     }

@@ -39,5 +39,5 @@ public interface OrdersServices {
 
     // Cancelar pedido
     @DELETE("pedidos/{id}")
-    Call<Boolean> Delete(@Path("id") String IdOrder);
+    Call<Object> Delete(@Path("id") String IdOrder);
 }

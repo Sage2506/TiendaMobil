@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.eduardosalazararanda.tiendamobil.Adapters.OrderListAdapter;
+import com.example.eduardosalazararanda.tiendamobil.ApplicationSession;
 import com.example.eduardosalazararanda.tiendamobil.R;
 
 public class OrdersListActivity extends AppCompatActivity {
@@ -18,7 +19,7 @@ public class OrdersListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_orders_list);
         api = new ApiOrders();
-
+        String email = ((ApplicationSession)this.getApplication()).getEmail();
         recyclerView = findViewById(R.id.rv_items);
         adapter = new OrderListAdapter(this);
         recyclerView.setAdapter(adapter);
@@ -26,6 +27,6 @@ public class OrdersListActivity extends AppCompatActivity {
         GridLayoutManager layoutManager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(layoutManager);
 
-        api.getAll(adapter,"venta@correro.com");
+        api.getAll(adapter,email);
     }
 }

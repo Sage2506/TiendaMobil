@@ -1,5 +1,7 @@
 package com.example.eduardosalazararanda.tiendamobil.ShoppingCart;
 
+import android.util.Log;
+
 import com.example.eduardosalazararanda.tiendamobil.Adapters.CartRowListAdapter;
 
 import java.util.ArrayList;
@@ -14,6 +16,7 @@ public class ApiShoppingCart {
 
     public Retrofit retrofit;
     final CartRowsServices service;
+    final String TAG = "ApiShoppingCart";
 
     public ApiShoppingCart(){
         retrofit = new Retrofit.Builder()
@@ -57,17 +60,17 @@ public class ApiShoppingCart {
     }
 
     public void add(String client, CartRow cartRow){
-        Call<Object> productsResponse = service.Create(client, cartRow);
-        productsResponse.enqueue(new Callback<Object>() {
+        Call<CartRow> productsResponse = service.Create(client, cartRow);
+        productsResponse.enqueue(new Callback<CartRow>() {
             @Override
-            public void onResponse(Call<Object> call, Response<Object> response) {
+            public void onResponse(Call<CartRow> call, Response<CartRow> response) {
                 if(response.isSuccessful()){
-
+                    Log.i(TAG, response.body().getCode());
                 }
             }
 
             @Override
-            public void onFailure(Call<Object> call, Throwable t) {
+            public void onFailure(Call<CartRow> call, Throwable t) {
 
             }
         });

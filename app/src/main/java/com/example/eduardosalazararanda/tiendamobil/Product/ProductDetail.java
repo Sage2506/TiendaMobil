@@ -15,6 +15,8 @@ import com.example.eduardosalazararanda.tiendamobil.Orders.ApiOrders;
 import com.example.eduardosalazararanda.tiendamobil.Orders.Order;
 import com.example.eduardosalazararanda.tiendamobil.Orders.OrderToPost;
 import com.example.eduardosalazararanda.tiendamobil.R;
+import com.example.eduardosalazararanda.tiendamobil.ShoppingCart.ApiShoppingCart;
+import com.example.eduardosalazararanda.tiendamobil.ShoppingCart.CartRow;
 
 public class ProductDetail extends AppCompatActivity {
 
@@ -40,6 +42,7 @@ public class ProductDetail extends AppCompatActivity {
         desc.setText(product.getDescription());
         price.setText(product.getPrice()+"");
         final ApiOrders orders = new ApiOrders();
+        final ApiShoppingCart cart = new ApiShoppingCart();
 
         Glide.with(this)
                 .load(product.getImage())
@@ -56,6 +59,14 @@ public class ProductDetail extends AppCompatActivity {
                 Order order = new Order(product, email);
                 orders.create(order);
 
+            }
+        });
+
+        btnAddCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CartRow cartRow = new CartRow(product);
+                cart.add(email, cartRow);
             }
         });
     }

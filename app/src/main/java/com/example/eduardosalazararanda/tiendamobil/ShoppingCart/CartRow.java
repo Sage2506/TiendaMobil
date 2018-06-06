@@ -1,8 +1,16 @@
 package com.example.eduardosalazararanda.tiendamobil.ShoppingCart;
 
+import com.example.eduardosalazararanda.tiendamobil.Product.Product;
 import com.google.gson.annotations.SerializedName;
 
 public class CartRow{
+	public CartRow(Product product){
+		this.productName = product.getName();
+		this.code = product.getCode();
+		this.description = product.getDescription();
+		this.price = product.getPrice();
+		this.quantity = 1;
+	}
 
 	@SerializedName("code")
 	private String code;

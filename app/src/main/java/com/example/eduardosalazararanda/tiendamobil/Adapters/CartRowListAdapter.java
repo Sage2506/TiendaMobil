@@ -40,7 +40,7 @@ public class CartRowListAdapter extends RecyclerView.Adapter<CartRowListAdapter.
     @Override
     public void onBindViewHolder(CartRowListAdapter.ViewHolder holder, int position) {
      CartRow c = dataset.get(position);
-        holder.TvCartName.setText(c.getDescription());
+        holder.TvCartName.setText(c.getProductName());
         holder.TvCartDesc.setText(c.getDescription());
         holder.TvCartPrice.setText(c.getPrice());
         holder.cardView.setTag(position);

@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.eduardosalazararanda.tiendamobil.Adapters.CartRowListAdapter;
+import com.example.eduardosalazararanda.tiendamobil.ApplicationSession;
 import com.example.eduardosalazararanda.tiendamobil.R;
 
 public class ShoppingListActivity extends AppCompatActivity {
@@ -19,7 +20,7 @@ public class ShoppingListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_shopping_list);
 
         api = new ApiShoppingCart();
-
+        String email = ((ApplicationSession)this.getApplication()).getEmail();
         recyclerView = findViewById(R.id.rv_items);
         adapter = new CartRowListAdapter(this);
         recyclerView.setAdapter(adapter);
@@ -36,6 +37,6 @@ public class ShoppingListActivity extends AppCompatActivity {
             }
         });*/
 
-        api.getAll(adapter,"pruebacarrito@hotmail.com");
+        api.getAll(adapter,email);
     }
 }
